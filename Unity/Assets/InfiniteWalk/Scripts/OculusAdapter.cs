@@ -9,7 +9,7 @@ public class OculusAdapter : BaseAdapter {
     [SerializeField]
     OVRInput.Controller selectedHand;    //Mano de OVR
 
-    public virtual Vector3 GetLocalPosition()
+    public  virtual Vector3 GetLocalPosition()
     {
         return OVRInput.GetLocalControllerPosition(selectedHand);
     }
