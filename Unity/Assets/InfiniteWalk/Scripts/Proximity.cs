@@ -8,7 +8,7 @@ using UnityEngine;
 public class Proximity : Selector
 {
 
-    private OculusHand thisHand;    //Este tipo de interacción necesita usar la mano para detectar si ha sido presionado el gatillo.
+    private BaseAdapter thisHand;    //Este tipo de interacción necesita usar la mano para detectar si ha sido presionado el gatillo.
     public float radius = 100f;     //Radio de interacción en la mano
 
     /// <summary>
@@ -17,7 +17,7 @@ public class Proximity : Selector
     /// </summary>
     virtual public void Start()
     {   
-        thisHand = GetComponent<OculusHand>();
+        thisHand = GetComponent<BaseAdapter>();
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public class Proximity : Selector
         if (firstHit != null)
         {
             InteractivityHover(firstHit);
-            if (thisHand.IsPressing)
+            if (thisHand.IsPressing())
             {
                 if (!firstHit.IsPressing)
                     InteractivityPress(firstHit);
