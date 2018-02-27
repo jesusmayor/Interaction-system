@@ -4,6 +4,8 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
+/Assets/OVR/
+/Assets/Plugins/
 
 Unity/[Ll]ibrary/
 Unity/[Tt]emp/
@@ -11,6 +13,8 @@ Unity/[Oo]bj/
 Unity/[Bb]uild/
 Unity/[Bb]uilds/
 Unity/Assets/AssetStoreTools*
+Unity/Assets/OVR/
+Unity/Assets/Plugins/
 
 [Ll]ibrary/
 [Tt]emp/
@@ -18,6 +22,8 @@ Unity/Assets/AssetStoreTools*
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+Assets/OVR/
+Assets/Plugins/
 
 # Visual Studio 2015 cache directory
 /.vs/
