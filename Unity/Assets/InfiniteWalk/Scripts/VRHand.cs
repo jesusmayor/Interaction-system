@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 public class VRHand : MonoBehaviour {
-
     InputManager inputManager;
+    public InputManager.Hands hand = InputManager.Hands.Left;
     
     void Start()
     {
@@ -11,7 +11,7 @@ public class VRHand : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        transform.position = inputManager.GetLocalPosition();
-        transform.rotation = inputManager.GetLocalRotation();
+        transform.position = inputManager.GetLocalPosition(hand);
+        transform.rotation = inputManager.GetLocalRotation(hand);
     }
 }

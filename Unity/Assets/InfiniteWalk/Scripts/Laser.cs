@@ -23,7 +23,7 @@ public class Laser : Selector
     Quaternion originalRotation;				// Orientación inicial de la retícula
     InteractiveItem interactible;               // Objeto interactivo que estamos utilizando
     private LineRenderer laser;                 // Referencia al laser creado para destruirlo después.
-    private BaseAdapter thisHand;                // Referencia a la mano para detectar si estamos pulsando un botón o no.
+    private VRHand thisHand;                // Referencia a la mano para detectar si estamos pulsando un botón o no.
 
     /// <summary>
     /// Evento Start de MonoBehavior. 
@@ -41,7 +41,7 @@ public class Laser : Selector
         originalScale = reticle.localScale;
         originalRotation = reticle.localRotation;
         
-        thisHand = GetComponent<BaseAdapter>();
+        thisHand = GetComponent<VRHand>();
     }
 
     /// <summary>
@@ -156,7 +156,7 @@ public class Laser : Selector
 
         RaycastHit hit;
 
-        if (thisHand.IsPressing())
+        if (InputManager.GetInstance().IsPressing(thisHand.hand))
         {
             if (!laser)     //Si se está pulsando botón y no existe un laser anterior, creamos uno nuevo.
             {
@@ -175,7 +175,7 @@ public class Laser : Selector
         if (laser)  //En función de dónde impacte el laser, se pinta en rojo o en verde.
         {
             laser.SetPosition(0, transform.position);
-            if (Physics.Raycast(ray, out hit) && thisHand.IsPressing() && hit.collider.gameObject.layer == LayerMask.NameToLayer("Movement")) //Draw bright. 
+            if (Physics.Raycast(ray, out hit) && InputManager.GetInstance().IsPressing(thisHand.hand) && hit.collider.gameObject.layer == LayerMask.NameToLayer("Movement")) //Draw bright. 
             {
                 hitPosition = hit.point;
 

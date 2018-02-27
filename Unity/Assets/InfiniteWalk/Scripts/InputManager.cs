@@ -41,12 +41,17 @@ public class InputManager : MonoBehaviour {
                 break;
             case SupportedDevices.Oculus:
             default:
-                adapter = new OculusAdapter();
+                adapter = new OculusAdapter(gameObject);
                 break;
         }
     }
 
-    public Vector3 GetHandLocalPosition(Hands hand) { return adapter.GetLocalPosition(); }
-    public Quaternion GetHandLocalRotation(Hands hand) { return adapter.GetLocalRotation(); }
-    public bool IsHandPressing(Hands hand) { return adapter.IsPressing(); }
+    void Update(){ adapter.Update(); }
+    void FixedUpdate(){ adapter.FixedUpdate(); }
+
+    public Vector3 GetLocalPosition(Hands hand) { return adapter.GetLocalPosition(hand); }
+    public Quaternion GetLocalRotation(Hands hand) { return adapter.GetLocalRotation(hand); }
+    public bool IsPressing(Hands hand) { return adapter.IsPressing(hand); }
+    public Vector3 GetHeadsetPosition() { return adapter.GetHeadsetPosition(); }
+    public Quaternion GetHeadsetRotation() { return adapter.GetHeadsetRotation(); }
 }
